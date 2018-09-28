@@ -9,6 +9,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { port, host, auth, analytics } from './config';
+
+models.sync().catch(err => console.error(err.stack)).then(() => {
+  app.listen(port, host, () => {
+  console.log(`The server is running at http://${host}:${port}/`);
+});
 
 const ContextType = {
   // Enables critical path CSS rendering

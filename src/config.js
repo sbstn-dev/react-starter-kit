@@ -17,7 +17,8 @@ if (process.env.BROWSER) {
 
 module.exports = {
   // Node.js app
-  port: process.env.PORT || 3000,
+  port: process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000,
+  host: process.env.OPENSHIFT_NODEJS_IP || 'localhost',
 
   // https://expressjs.com/en/guide/behind-proxies.html
   trustProxy: process.env.TRUST_PROXY || 'loopback',
@@ -33,7 +34,7 @@ module.exports = {
   },
 
   // Database
-  databaseUrl: process.env.DATABASE_URL || 'sqlite:database.sqlite',
+  databaseUrl: process.env.OPENSHIFT_DATA_DIR || 'sqlite:database.sqlite',
 
   // Web analytics
   analytics: {
